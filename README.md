@@ -24,4 +24,4 @@ To montitor the MKS Mini Convectron 275:
 ```
 python print_and_write.py
 ```
-Be sure to edit line 53 with the approriate port for the Ardiuno. This program will will create a file called "out.csv" and write the voltage and converted vacuum pressure sent by the Arduino to the file and the console.
+Be sure to edit line 53 with the approriate port for the Ardiuno. This program will will create a file called "out.csv" and write the voltage and converted vacuum pressure sent by the Arduino to the file and the console. Finish collection and monitoring by pressing ctrl+c.
