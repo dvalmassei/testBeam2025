@@ -4,6 +4,11 @@ Programs for Raspberry Pi to control Velmex motion system and monitor MKS Mini C
 -------------------------------------------------
 ## Dependancies
 
+-pySerial [https://pypi.org/project/pyserial/]
+```
+pip install pyserial
+```
+
 -------------------------------------------------
 ## Usage
 
