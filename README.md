@@ -1,7 +1,6 @@
 # testBeam2025
 Programs for Raspberry Pi to control Velmex motion system and monitor MKS Mini Convectron 275 for Test Beam installation at JLab.
 
--------------------------------------------------
 ## Dependancies
 
 -pySerial [https://pypi.org/project/pyserial/]
@@ -9,7 +8,6 @@ Programs for Raspberry Pi to control Velmex motion system and monitor MKS Mini C
 pip install pyserial
 ```
 
--------------------------------------------------
 ## Usage
 
 To move the Velmex slider by a specific amount, run:
