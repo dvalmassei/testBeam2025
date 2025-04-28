@@ -10,38 +10,41 @@ import serial
 import csv
 import time
 
+a1 = 100.624
+b1 = -0.37679
+c1 = -20.5623
+d1 = 0.0348656
+
+a2 = 0.1031
+b2 = -0.3986
+c2 = -0.02322
+d2 = 0.07438
+e2 = 0.07229
+f2 = -0.006866
+
+a3 = -0.02585
+b3 = 0.03767
+c3 = 0.04563
+d3 = 0.1151
+e3 = -0.04158
+f3 = 0.008737
+
 def convert_voltage(voltage):
+    
+    
     if voltage >= 4.94:
-        a = 100.624
-        b = -0.37679
-        c = -20.5623
-        d = 0.0348656
-        
-        numerator = a + c*voltage
-        denom = 1 + b*voltage + d*voltage**2
+        numerator = a1 + c1*voltage
+        denom = 1 + b1*voltage + d1*voltage**2
         
         return numerator/denom
     
     elif voltage >= 2.842:
-        a = 0.1031
-        b = -0.3986
-        c = -0.02322
-        d = 0.07438
-        e = 0.07229
-        f = -0.006866
-        
-        numerator = a + c*voltage + e*voltage**2
-        denom = 1 + b*voltage + d*voltage**2 + f*voltage**3
+        numerator = a2 + c2*voltage + e2*voltage**2
+        denom = 1 + b2*voltage + d2*voltage**2 + f2*voltage**3
         return numerator/denom
     
     elif voltage >= 0.375:
-        a = -0.02585
-        b = 0.03767
-        c = 0.04563
-        d = 0.1151
-        e = -0.04158
-        f = 0.008737
-        return a + b*voltage + c*voltage**2 + d*voltage**3 + e*voltage**4 + f*voltage**5
+        return a3 + b3*voltage + c3*voltage**2 + d3*voltage**3 + e3*voltage**4 + f3*voltage**5
     
     
     else: #something went wrong. return an unreasonable value
@@ -61,13 +64,19 @@ def main():
     
     with open(output_file, mode='w', newline='') as file:
         writer = csv.writer(file)
+        writer.writerow(['time (s)','voltage (V)','Pressure (Torr)'])
     
-        print('Collecting data... Press Ctrl+C to stop.')
+        print('Collecting data... Press ctrl+c to stop.')
         try: 
             while True:
                 line = ser.readline().decode('utf-8').strip().split(', ')
-                print(line[0],convert_voltage(line[1]))
-                writer.writerow(line)
+                timeNow = line[0]
+                voltage = line[1]
+                pressure = convert_voltage(float(voltage))
+                
+                string = [f'{timeNow}',f'{voltage}',f'{pressure}']
+                print(string)
+                writer.writerow(string)
                 
         except KeyboardInterrupt:
             print('Data collection stopped.')
