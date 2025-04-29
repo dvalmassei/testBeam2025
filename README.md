@@ -18,7 +18,7 @@ python vxmReady.py
 
 To move the Velmex slider by a specific amount, run:
 ```
-python module_command.py move <displacement in mm>
+python module_control.py move <displacement in mm>
 ```
   - positive displacement: move the carriage downward
   - negative displacement: move the carriage upward
@@ -26,7 +26,7 @@ python module_command.py move <displacement in mm>
 
 To home the Velmex slider to one of the limit switches:
 ```
-python module_command.py limit <endstop>
+python module_control.py limit <endstop>
 ```
   endstop options: "top" OR "bottom"
 
