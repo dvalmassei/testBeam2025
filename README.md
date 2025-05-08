@@ -11,10 +11,11 @@ pip install pyserial
 ## Usage
 Upon startup, to enable serial communication with the VXM Controller, run:
 ```
-python vxmReady.py
+python vxmReady.py <optional parameter: speed (mm/sec)>
 ```
 * When the VXM Controller is powered on, its current location becomes its zero position. It is recommended that the carriage is returned to the motorside endstop ("top") before cycling power to the VXM.
-
+* A parameter may be passed to set the motor speed (in mm/sec). Allowed speeds must be greater than zero and no more than 6000 steps/sec (approx. 38 mm/sec).
+  - If a speed outside this range is requested, the speed will be set to the nearest allowed extreme value.
 
 To move the Velmex slider by a specific amount, run:
 ```
